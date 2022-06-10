@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurismoU3.Views.DetallesView"
+             xmlns:local="clr-namespace:TurismoU3.ViewModels"
+             Title="Detalles">
+    <ContentPage.BindingContext>
+        <local:LugaresViewModel></local:LugaresViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+       
+            <StackLayout HorizontalOptions="FillAndExpand" Background="White" VerticalOptions="StartAndExpand">
+                
+                <Image Source="{Binding Link}" HorizontalOptions="FillAndExpand"></Image>
+                <Label HorizontalOptions="Center" FontSize="Title" Text="{Binding Ciudad}" TextColor="#0AB927" FontAttributes="Bold"></Label>
+                
+                <Label VerticalTextAlignment="Center" Margin="10" FontSize="Body" Text="{Binding Descripcion}"></Label>
+            </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

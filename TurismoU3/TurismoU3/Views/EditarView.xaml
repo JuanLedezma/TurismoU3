@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurismoU3.Views.EditarView"
+             xmlns:local="clr-namespace:TurismoU3.ViewModels">
+    <ContentPage.BindingContext>
+        <local:LugaresViewModel></local:LugaresViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="0,20">
+                <Label  Margin="15,0" FontSize="Title" FontAttributes="Bold" TextColor="#0AB927"  Text="Editar"></Label>
+                <Label Margin="15,0" Text="Todas sus recomendaciones seran verificadas por un moderador"></Label>
+                <StackLayout Spacing="3" Padding="15">
+
+                    <StackLayout.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="Medium"></Setter>
+                            <Setter Property="TextColor" Value="#0AB927"></Setter>
+                            
+                        </Style>
+                        <Style TargetType="Entry">
+                            <Setter Property="Margin" Value="0,0,0,10"></Setter>
+                        </Style>
+                    </StackLayout.Resources>
+                    <Label Text="Ciudad"  />
+                    <Entry Text="{Binding Lugares.Ciudad}" FontSize="Medium" />
+                    <Label Text="Nombre de la Atraccion"  />
+                    <Editor Text="{Binding Lugares.Atraccion}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+                    <Label Text="Link de la foto"/>
+                    <Editor x:Name="img" Text="{Binding Lugares.Link}" AutoSize="TextChanges" FontSize="Medium" Margin="0" ></Editor>
+                    <Label  Text="Descripcion"/>
+                    <Editor Text="{Binding Lugares.Descripcion}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                    <Label Text="Vista Previa de la Imagen" FontAttributes="Bold" Margin="10"></Label>
+                    <Image Source="{Binding Source={x:Reference img}, Path=Text}"></Image>
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GuardarCommand}" IconImageSource="../Resources/drawable/edit.png"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+</ContentPage>

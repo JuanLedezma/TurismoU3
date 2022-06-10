@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurismoU3.Views.ExplorarView"
+             xmlns:local="clr-namespace:TurismoU3.ViewModels"
+             Title="Explorar"
+             >
+    <ContentPage.BindingContext>
+        <local:LugaresViewModel x:Name="lvm"></local:LugaresViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="400" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--Stack del header-->
+                <StackLayout Grid.Row="0" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <Image  Margin="0"  Source="../Resources/drawable/fondoheader.png"></Image>
+                    
+
+                </StackLayout>
+                <!--Stack de la coleccion-->
+                <StackLayout Margin="5,-10" Grid.Row="1">
+                    <Label FontAttributes="Bold" TextColor="Black" FontSize="Title" Text="Lugares para visitar este fin"></Label>
+                    <Label Margin="0,-2" Text="Descubre lugares para toda la familia" FontSize="Subtitle"></Label>
+                    
+                        
+        
+                    <CollectionView x:Name="ColeccionLugares" Margin="0,20" HorizontalScrollBarVisibility="Always"  ItemsSource="{Binding Lugar}" HeightRequest="250" >
+                               
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal"
+                           ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+
+                                <Grid >
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference lvm}, Path=DetallesCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_TappedAsync" NumberOfTapsRequired="2"  Command="{Binding Source={x:Reference lvm}, Path=TemporalCommand}"    CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="200"></RowDefinition>
+                                        <RowDefinition Height="50"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Aspect="AspectFill"  Grid.Row="0" Margin="0" Source="{Binding Link}"></Image>
+                                    <StackLayout Grid.Row="1" HorizontalOptions="Center">
+                                        <Label HorizontalOptions="Center"  FontSize="Body" FontAttributes="Bold" Grid.Row="1" Text="{Binding Ciudad}"></Label>
+                                        <Label  HorizontalOptions="Center" Margin="0,-5,0,0" Grid.Row="1" Text="{Binding Atraccion}"></Label>
+
+                                    </StackLayout>
+
+                                </Grid>
+
+
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                <Grid Margin="0,20">
+                        <Image Source="../Resources/drawable/museo.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer>
+
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label  FontSize="Title" FontAttributes="Bold" Text="Explora nuestros mejores museos" TextColor="White" VerticalOptions="CenterAndExpand" Margin="10,0">
+
+                        </Label>
+
+                    </Grid>
+
+                </StackLayout>
+
+            </Grid>
+
+        </ScrollView>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem Command="{Binding CambiarVistaCommand}" CommandParameter="Agregar" Text="Agregar"  IconImageSource="../Resources/drawables/add.png"/>
+        
+    </ContentPage.ToolbarItems>
+</ContentPage>

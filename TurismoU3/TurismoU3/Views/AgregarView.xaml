@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TurismoU3.Views.AgregarView"
+             Title="Agregar">
+
+    <StackLayout Margin="0,20">
+
+
+      
+        <Label Margin="15,0" Text="Todas sus recomendaciones seran verificadas por un moderador"></Label>
+        <StackLayout Spacing="3" Padding="15">
+            
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="Medium"></Setter>
+                    <Setter Property="FontSize" Value="Medium"></Setter>
+                    <Setter Property="TextColor" Value="#0AB927"></Setter>
+                </Style>
+               
+            </StackLayout.Resources>
+            <Label Text="Ciudad"  />
+            <Entry  Text="{Binding Lugares.Ciudad}" FontSize="Medium" />
+            <Label Text="Nombre de la Atraccion"  />
+            <Editor Text="{Binding Lugares.Atraccion}" FontSize="Medium" Margin="0" />
+            <Label Text="Link de la foto"/>
+            <Editor x:Name="img" Text="{Binding Lugares.Link}"  FontSize="Medium" Margin="0" ></Editor>
+            <Label Text="Descripcion"/>
+            <Editor Text="{Binding Lugares.Descripcion}" FontSize="Medium" Margin="0"/>
+            <Label Text="Vista Previa de la Imagen" FontAttributes="Bold" Margin="10"></Label>
+            <Image Source="{Binding Source={x:Reference img}, Path=Text}"></Image>
+
+
+        </StackLayout>
+    </StackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding AgregarCommand}" IconImageSource="../Resources/drawable/bookmark.png" Text="Guardar"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+</ContentPage>
