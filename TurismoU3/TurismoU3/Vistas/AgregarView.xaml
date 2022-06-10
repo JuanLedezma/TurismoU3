@@ -28,6 +28,7 @@
             <Label Text="Descripcion"/>
             <Editor Text="{Binding Lugares.Descripcion}" FontSize="Medium" Margin="0"/>
             <Label Text="Vista Previa de la Imagen" FontAttributes="Bold" Margin="10"></Label>
+            <Label Text="{Binding Vacio}"  TextColor="Red"></Label>
             <Image Source="{Binding Source={x:Reference img}, Path=Text}"></Image>
 
 
